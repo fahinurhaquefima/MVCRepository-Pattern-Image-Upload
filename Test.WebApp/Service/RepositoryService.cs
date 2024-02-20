@@ -6,7 +6,7 @@ using Test.WebApp.Models.Base;
 
 namespace Test.WebApp.Service
 {
-    public class RepositoryService<TEntity, IModel> : IRepositoryService<TEntity, IModel> where TEntity : AuditableEntity, new() where IModel : class
+    public class RepositoryService<TEntity, IModel> : IRepositoryService<TEntity, IModel> where TEntity : AuditableEntity, new() where IModel : BaseEntity
     {
         private readonly IMapper _mapper;
         private readonly StudentDbContext dbContext;

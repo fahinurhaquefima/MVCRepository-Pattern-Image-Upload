@@ -1,6 +1,8 @@
-﻿namespace Test.WebApp.Service;
+﻿using Test.WebApp.Models.Base;
 
-public interface IRepositoryService<TEntity,IModel> where TEntity : class, new() where IModel : class
+namespace Test.WebApp.Service;
+
+public interface IRepositoryService<TEntity,IModel> where TEntity : AuditableEntity, new() where IModel : BaseEntity
 {
     Task<IEnumerable<IModel>> GetAllAsync(CancellationToken cancellationToken);   
     Task<IModel> InsertAsync(IModel model,CancellationToken cancellationToken);

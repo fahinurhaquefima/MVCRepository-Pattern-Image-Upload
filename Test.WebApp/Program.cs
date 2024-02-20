@@ -8,10 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StudentDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Conn")));
-builder.Services.AddAutoMapper(x =>
-{
-    x.AddMaps(typeof(ICore).Assembly);
-});
+//builder.Services.AddAutoMapper(x =>
+//{
+//    x.AddMaps(typeof(ICore).Assembly);
+//});
+builder.Services.AddAutoMapper(typeof(ICore).Assembly);
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 var app = builder.Build();
 
