@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Test.WebApp.ViewModel.StudentVm>
+@{
+    int idNo = 1;
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">RegistrationId</th>
+            <th scope="col">Iamge</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@idNo</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.RegistrationId</td>
+                <td><img class="img-thumbnail" width="50" src="~/images/student/@item.Image" /></td>
+
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="CreateOrEdit" asp-controller="Student" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="Student" asp-route-id="@item.Id" onclick="return alert('Are Your Sure Delete This Item?')">Delete</a>
+                </td>
+                
+            </tr>
+            idNo++;
+        }
+    </tbody>
+</table>
